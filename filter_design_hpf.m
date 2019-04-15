@@ -1,5 +1,5 @@
 clear all;clc;
-[jet_engine,fs] = audioread('jet_engine.wav');
+[jet_engine,fs] = audioread('white_noise_jet.mp3');
 [audio_voice,fs] = audioread('audio_voice.mp3');
 jet_engine((length(audio_voice)+1):end) = [];
 audio_voice((length(audio_voice)+1):end) = [];
@@ -19,11 +19,11 @@ sound(audio_input,fs);
 
 %========= Jalanin dulu sampai sini ======%
 
-wp = 2*pi*2000/fs; ws = 2*pi*2200/fs;
+wp = 2*pi*600/fs; ws = 2*pi*400/fs;
 tr_width = abs(ws - wp);
 wc = abs((ws+wp)/2);
 M = ceil(6.6*pi/tr_width) + 1;
-hd = ideal_lp(wc,M);
+hd = ideal_hp(wc,M);
 w_ham = (hamming(M));
 h = hd.*transpose(w_ham);
 
