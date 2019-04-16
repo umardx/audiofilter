@@ -21,7 +21,7 @@ audiowrite('audio_input.wav', audio_input_temp, fs);
 audio_input = transpose(audio_input);
 sound(audio_input, fs);
 
-wp = 2*pi*3400/fs; ws = 2*pi*3500/fs;
+wp = 2*pi*900/fs; ws = 2*pi*3500/fs;
 tr_width = abs(ws - wp);
 wc = abs((ws+wp)/2);
 M = ceil(6.6*pi/tr_width) + 1;
